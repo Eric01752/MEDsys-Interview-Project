@@ -2,3 +2,69 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    outline: none;
+    padding: 5px 5px 5px 0px;
+    font-size: 24px;
+    border-bottom: solid 2px #e0dfdf;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.btnForm {
+    border: 1px black solid;
+    border-radius: 0.5rem;
+    padding: 8px;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.btnTable {
+    border: 1px black solid;
+    border-radius: 0.5rem;
+    padding: 8px;
+    margin: 3px;
+}
+
+.btnAdd {
+    border: 1px black solid;
+    border-radius: 0.5rem;
+    padding: 8px;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    width: 100vw;
+}
+
+.listContainer, .formContainer {
+    padding: 25px;
+    margin: 20px;
+    border: 2px black solid;
+    border-radius: 1rem;
+}

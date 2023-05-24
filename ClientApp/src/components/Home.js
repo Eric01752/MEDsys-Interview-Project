@@ -1,4 +1,4 @@
-﻿import React, { useState, Fragment, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import Items from "./Items";
 import AddItem from "./AddItem";
@@ -9,14 +9,19 @@ import { itemSort } from "../Utils/sorting";
 const Home = () => {
 
     const [items, setItems] = useState(null);
-    const [item, setItem] = useState("");
+    const [item, setItem] = useState(null);
     const [showAddForm, setShowAddForm] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
+
         axios.get('item').then((res) => {
             setItems(res.data);
         });
+
+        setIsLoading(false);
     }, []);
 
     const deleteItem = (id) => {
@@ -75,34 +80,40 @@ const Home = () => {
     };
 
     const openAddForm = () => {
+        setBtnsDisabled(true);
         setShowEditForm(false);
         setShowAddForm(true);
     };
 
     const openEditForm = (item) => {
-        setItem(item);
+        setBtnsDisabled(true);
+        setItem(null);
         setShowAddForm(false);
         setShowEditForm(true);
+        setItem(item);
     };
 
     const closeForms = () => {
         setShowAddForm(false);
         setShowEditForm(false);
-        setItem("");
+        setItem(null);
+        setBtnsDisabled(false);
+    };
+
+    const setBtnsDisabled = (status) => {
+        document.querySelectorAll(".btnStatus").forEach((btn) => btn.disabled = status);
     };
 
     return (
-        <Fragment>
-            <div>
+        <div className="container">
+            <div className="listContainer">
                 <h1>Item List</h1>
-                <button onClick={openAddForm}>Add Item</button>
-                <Items items={items} openEditForm={openEditForm} deleteItem={deleteItem} />
+                <button onClick={openAddForm} className="btnAdd btnStatus">Add Item</button>
+                <Items items={items} openEditForm={openEditForm} deleteItem={deleteItem} isLoading={isLoading} />
             </div>
-            <div>
-                {showAddForm && <AddItem createItem={createItem} />}
-                {showEditForm && <EditItem item={item} editItem={editItem} />}
-            </div>
-        </Fragment>
+            {showAddForm && <AddItem createItem={createItem} closeForms={closeForms} />}
+            {showEditForm && <EditItem item={item} editItem={editItem} closeForms={closeForms} />}
+        </div>
     );
 };
 

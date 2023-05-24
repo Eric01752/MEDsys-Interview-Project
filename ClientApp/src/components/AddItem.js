@@ -1,6 +1,6 @@
-﻿import { useState, Fragment } from "react";
+﻿import { useState } from "react";
 
-const AddItem = ({ createItem }) => {
+const AddItem = ({ createItem, closeForms }) => {
 
     const initState = {
         name: "",
@@ -26,16 +26,17 @@ const AddItem = ({ createItem }) => {
     };
 
     return (
-        <Fragment>
+        <div className="formContainer">
             <h1>Add Item</h1>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" onChange={handleChange}></input>
-                <label htmlFor="description">Description: </label>
-                <input type="text" id="description" name="description" onChange={handleChange}></input>
-                <button type="submit">Submit</button>
+            <form onSubmit={onSubmit} autoComplete="off">
+                <label htmlFor="name">Name: </label><br />
+                <input type="text" id="name" name="name" onChange={handleChange}></input><br />
+                <label htmlFor="description">Description: </label><br />
+                <input type="text" id="description" name="description" onChange={handleChange}></input><br />
+                <button type="submit" className="btnForm">Submit</button>
+                <button onClick={closeForms} className="btnForm">Close Form</button>
             </form>
-        </Fragment>
+        </div>
     );
 };
 

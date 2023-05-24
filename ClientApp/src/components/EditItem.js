@@ -1,6 +1,6 @@
-﻿import { Fragment, useState } from "react";
+﻿import { useState } from "react";
 
-const EditItem = ({ item, editItem }) => {
+const EditItem = ({ item, editItem, closeForms }) => {
 
     const [newItem, setNewItem] = useState(item);
 
@@ -21,16 +21,17 @@ const EditItem = ({ item, editItem }) => {
     };
 
     return (
-        <Fragment>
+        <div className="formContainer">
             <h1>Edit Item</h1>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input type="text" id="name" name="name" value={newItem.name} onChange={handleChange}></input>
-                <label htmlFor="description">Description: </label>
-                <input type="text" id="description" name="description" value={newItem.description} onChange={handleChange}></input>
-                <button type="submit">Submit</button>
+            <form onSubmit={onSubmit} autoComplete="off">
+                <label htmlFor="name">Name: </label><br />
+                <input type="text" id="name" name="name" value={newItem.name} onChange={handleChange}></input><br />
+                <label htmlFor="description">Description: </label><br />
+                <input type="text" id="description" name="description" value={newItem.description} onChange={handleChange}></input><br />
+                <button type="submit" className="btnForm">Submit</button>
+                <button onClick={closeForms} className="btnForm">Close Form</button>
             </form>
-        </Fragment>
+        </div>
     );
 };
 

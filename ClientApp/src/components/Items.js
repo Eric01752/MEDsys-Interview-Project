@@ -1,6 +1,6 @@
 ﻿import Item from "./Item";
 
-const Items = ({ items, openEditForm, deleteItem }) => {
+const Items = ({ items, openEditForm, deleteItem, isLoading }) => {
 
     return (
         <table>
@@ -13,10 +13,11 @@ const Items = ({ items, openEditForm, deleteItem }) => {
             </thead>
             <tbody>
                 {
-                    items != null &&
+                    !isLoading && items != null ?
                     items.map((item, index) =>
-                        <Item key={index} id={item.id} name={item.name} description={item.description} openEditForm={openEditForm} deleteItem={deleteItem} />
-                    )
+                            <Item key={index} id={item.id} name={item.name} description={item.description} openEditForm={openEditForm} deleteItem={deleteItem} />
+                        ) :
+                        <tr><td>Loading...</td></tr>
                 }
             </tbody>
         </table>
