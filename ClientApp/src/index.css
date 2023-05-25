@@ -62,9 +62,17 @@ td, th {
     width: 100vw;
 }
 
-.listContainer, .formContainer {
+.listContainer {
     padding: 25px;
     margin: 20px;
     border: 2px black solid;
     border-radius: 1rem;
+}
+
+.formContainer {
+    padding: 25px;
+    margin: 20px;
+    border: 2px black solid;
+    border-radius: 1rem;
+    max-height: 300px;
 }

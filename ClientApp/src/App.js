@@ -2,7 +2,7 @@ import "./index.css";
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
+import { Layout } from './Components/Layout';
 
 export default class App extends Component {
   static displayName = App.name;
