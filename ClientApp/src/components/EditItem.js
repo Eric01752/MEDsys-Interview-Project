@@ -29,7 +29,7 @@ const EditItem = ({ item, editItem, closeForms }) => {
                 <label htmlFor="description">Description: </label><br />
                 <input type="text" id="description" name="description" value={newItem.description} onChange={handleChange}></input><br />
                 <button type="submit" className="btnForm">Submit</button>
-                <button onClick={closeForms} className="btnForm">Close Form</button>
+                <button onClick={closeForms} className="btnForm">Cancel</button>
             </form>
         </div>
     );
