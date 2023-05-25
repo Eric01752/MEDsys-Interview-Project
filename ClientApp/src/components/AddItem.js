@@ -2,11 +2,13 @@
 
 const AddItem = ({ createItem, closeForms }) => {
 
+    // Default state
     const initState = {
         name: "",
         description: ""
     };
 
+    // State to hold form input information
     const [item, setItem] = useState(initState);
 
     const onSubmit = (e) => {

@@ -8,10 +8,15 @@ import { itemSort } from "../Utils/sorting";
 
 const Home = () => {
 
+    // State to hold the items returned from api
     const [items, setItems] = useState(null);
+    // State to hold item being passed to EditForm
     const [item, setItem] = useState(null);
+    // State to show or hide AddForm
     const [showAddForm, setShowAddForm] = useState(false);
+    // State to show or hide EditForm
     const [showEditForm, setShowEditForm] = useState(false);
+    // State to check if item list is loading
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {

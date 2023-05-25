@@ -2,6 +2,7 @@
 
 const EditItem = ({ item, editItem, closeForms }) => {
 
+    // State to hold form input information
     const [newItem, setNewItem] = useState(item);
 
     const onSubmit = (e) => {
